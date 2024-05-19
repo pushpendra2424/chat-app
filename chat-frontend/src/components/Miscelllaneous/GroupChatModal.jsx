@@ -168,7 +168,6 @@ const GroupChatModal = ({ children }) => {
           </ModalFooter>
         </ModalContent>
       </Modal>
-      GroupChatModal
     </>
   );
 };
