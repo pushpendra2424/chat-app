@@ -33,7 +33,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   const toast = useToast();
   const [loading, setLoading] = useState(false);
   const [socketConnected, setSocketConnected] = useState(false);
-  const [newMessage, setNewMessage] = useState();
+  const [newMessage, setNewMessage] = useState("");
 
   useEffect(() => {
     socket = io(ENDPOINT);
@@ -47,13 +47,13 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     fetchMessages();
     selectedChatCompare = selectedChat;
   }, [selectedChat]);
+
   useEffect(() => {
     socket.on("message received", (newMessageRecieved) => {
       if (
         !selectedChatCompare ||
         selectedChatCompare._id !== newMessageRecieved.chat._id
       ) {
-        // GivenotificationsationalMessage(newMessageRecieved);
         if (!notification.includes(newMessageRecieved)) {
           setNotification([newMessageRecieved, ...notification]);
           setFetchAgain(!fetchAgain);
@@ -86,6 +86,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
       }
     }
   };
+
   const typingHandler = (e) => {
     setNewMessage(e.target.value);
     if (!socketConnected) return;
@@ -95,7 +96,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     }
 
     let lastTypingTime = new Date().getTime();
-    let timerLength = 3000;
+    let timerLength = 1000;
     setTimeout(() => {
       let timeNow = new Date().getTime();
       let timeDiff = timeNow - lastTypingTime;
@@ -118,7 +119,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
       setLoading(false);
       socket.emit("join chat", selectedChat._id);
     } catch (error) {
-      toast(ShowToast("Error Occured.", "error", "Fialed to load the message"));
+      toast(ShowToast("Error Occured.", "error", "Failed to load the message"));
       setLoading(false);
     }
   };
@@ -169,7 +170,6 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             borderRadius={"lg"}
             overflowY={"hidden"}
           >
-            {/* messages here */}
             {loading ? (
               <Spinner
                 size="xl"
@@ -180,14 +180,13 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
               />
             ) : (
               <div className="messages">
-                {/* messages  */}
                 <ScrollableChat messages={messages} />
               </div>
             )}
             <FormControl onKeyDown={sendMessage} isRequired mt={3}>
               {isTyping ? (
                 <div style={{ paddingBottom: "10px" }}>
-                  <Typing />
+                  <Typing user={user} />
                 </div>
               ) : (
                 <></>
@@ -197,8 +196,6 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                 bg={"#E0E0E0"}
                 placeholder="Enter a message"
                 onChange={typingHandler}
-                // display={"flex"}
-                // alignItems={"center"}
                 value={newMessage}
               ></Input>
             </FormControl>

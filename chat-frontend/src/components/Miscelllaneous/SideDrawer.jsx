@@ -124,9 +124,9 @@ const SideDrawer = () => {
             </Text>
           </Button>
         </Tooltip>
-        <Text fontSize={"2xl"} fontFamily={"Work sans"}>
+        {/* <Text fontSize={"2xl"} fontFamily={"Work sans"}>
           Talk-A-Tive
-        </Text>
+        </Text> */}
         <div>
           <Menu>
             <MenuButton p={1} position="relative">
@@ -148,7 +148,7 @@ const SideDrawer = () => {
               <BellIcon fontSize={"2xl"} m={1} />
               {/* <Notification count={notification.length} /> */}
             </MenuButton>
-            <MenuList m={2}>
+            <MenuList m={2} p={3}>
               {!notification.length && "No New Notification"}
               {notification.map((notif) => (
                 <MenuItem
@@ -200,9 +200,12 @@ const SideDrawer = () => {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
               />
-              <Button onClick={handleSearch} isLoading={loading}>
-                Go
-              </Button>
+              {search.length >2 && (
+                <Button onClick={handleSearch} isLoading={loading}>
+                  Go
+                </Button>
+              )}
+              
             </Box>
             {loading ? (
               <ChatLoading />

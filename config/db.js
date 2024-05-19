@@ -6,9 +6,13 @@ const connectDB = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    console.log(`MongoDB Connected : ${conn.connection.host}`.yellow.underline);
+    if (process.env.NODE_ENV !== "production")
+      console.log(
+        `MongoDB Connected : ${conn.connection.host}`.yellow.underline
+      );
   } catch (error) {
-    console.log(`Error : ${error.message}`.red.bgRed.bold);
+    if (process.env.NODE_ENV !== "production")
+      console.log(`Error : ${error.message}`.red.bgRed.bold);
 
     process.exit(1);
   }

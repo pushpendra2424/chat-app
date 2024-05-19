@@ -7,6 +7,7 @@ import {
   TabPanel,
   TabPanels,
   Tab,
+  Flex,
 } from "@chakra-ui/react";
 import Login from "../components/Authentication/Login";
 import Signup from "../components/Authentication/Signup";
@@ -26,7 +27,7 @@ const HomePage = () => {
 
   return (
     <Container maxW={"xl"} centerContent>
-      <Box
+      {/* <Box
         d="flex"
         justifyContent="center"
         p={"3"}
@@ -43,29 +44,37 @@ const HomePage = () => {
         >
           Talk-A-Tive
         </Text>
-      </Box>
-      <Box
-        bg={"white"}
-        w={"100%"}
-        p={4}
-        borderRadius={"lg"}
-        borderWidth={"1px"}
+      </Box> */}
+      <Flex
+        direction="column"
+        justify="center"
+        align="center"
+        h="100vh"
+        w="100%"
       >
-        <Tabs variant="soft-rounded">
-          <TabList mb={"1em"}>
-            <Tab width={"50%"}>LogIn</Tab>
-            <Tab width={"50%"}>SignUp</Tab>
-          </TabList>
-          <TabPanels>
-            <TabPanel>
-              <Login />
-            </TabPanel>
-            <TabPanel>
-              <Signup />
-            </TabPanel>
-          </TabPanels>
-        </Tabs>
-      </Box>
+        <Box
+          bg={"white"}
+          w={"100%"}
+          p={4}
+          borderRadius={"lg"}
+          borderWidth={"1px"}
+        >
+          <Tabs variant="soft-rounded">
+            <TabList mb={"1em"}>
+              <Tab width={"50%"}>LogIn</Tab>
+              <Tab width={"50%"}>SignUp</Tab>
+            </TabList>
+            <TabPanels>
+              <TabPanel>
+                <Login />
+              </TabPanel>
+              <TabPanel>
+                <Signup />
+              </TabPanel>
+            </TabPanels>
+          </Tabs>
+        </Box>
+      </Flex>
     </Container>
   );
 };

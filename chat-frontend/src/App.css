@@ -3,9 +3,11 @@
 .App {
   min-height: 100vh;
   display: flex;
-  background-image: url("./background.png");
+  /* background-color: aqua; */
+  background-color: aquamarine;
+  /* background-image: url("./background.png");
   background-size: cover;
-  background-position: center;
+  background-position: center; */
   color: black;
 }
 
