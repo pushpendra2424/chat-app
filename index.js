@@ -4,12 +4,12 @@ const colors = require("colors");
 const path = require("path");
 const cors = require("cors");
 const socket = require("socket.io");
-const User = require("./models/userModel.js");
 const connectDB = require("./config/db.js");
 const userRoutes = require("./routes/userRoute.js");
 const chatRoutes = require("./routes/chatRoute.js");
 const messageRoutes = require("./routes/messageRoute.js");
 const { notFound, errorHandler } = require("./middleware/errorMiddleware.js");
+const User = require("./models/userModel.js");
 
 const app = express();
 
