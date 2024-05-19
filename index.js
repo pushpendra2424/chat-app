@@ -49,15 +49,15 @@ app.use(notFound);
 app.use(errorHandler);
 
 const server = app.listen(port, async (req, res) => {
-  // const getData = await User.findOne();
-  // if (!getData) {
-  //   let users = [
-  //     { name: "Guest User", email: "guest@example.com", password: "12345" },
-  //     { name: "First User", email: "first@example.com", password: "12345" },
-  //     { name: "Second User", email: "second@example.com", password: "12345" },
-  //   ];
-  //   users.map(async (user) => await User.create(user));
-  // }
+  const getData = await User.findOne();
+  if (!getData) {
+    let users = [
+      { name: "Guest User", email: "guest@example.com", password: "12345" },
+      { name: "First User", email: "first@example.com", password: "12345" },
+      { name: "Second User", email: "second@example.com", password: "12345" },
+    ];
+    users.map(async (user) => await User.create(user));
+  }
   if (process.env.NODE_ENV !== "production")
     console.log(`server running on port 5000`.red.bold);
 });
