@@ -3,7 +3,7 @@ const { protect } = require("../middleware/authMiddleware");
 const {
   allMessages,
   sendMessage,
-} = require("../controllers/messageCOntroller");
+} = require("../controllers/messageController");
 const router = express.Router();
 
 router.route("/:chatId").get(protect, allMessages);
