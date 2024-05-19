@@ -4,13 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index",
-    "server": "nodemon index.js",
+    "start": "node index && npm run client",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "client": "npm run dev --prefix /chat-frontend",
-    "build": "npm run client && npm run server",
-    "dev": "concurrently \"npm run client\" \"npm run server\""
-  },
+    "client": "npm run build --prefix /chat-frontend"
+    },
   "author": "Pushpendra kumar",
   "license": "ISC",
   "dependencies": {
