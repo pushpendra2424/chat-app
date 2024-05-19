@@ -4,7 +4,7 @@ const colors = require("colors");
 const path = require("path");
 const cors = require("cors");
 const socket = require("socket.io");
-
+const User = require("./models/userModel.js");
 const connectDB = require("./config/db.js");
 const userRoutes = require("./routes/userRoute.js");
 const chatRoutes = require("./routes/chatRoute.js");
@@ -21,7 +21,7 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://chat-app-mern1.vercel.app",
   })
 );
 
@@ -89,7 +89,7 @@ io.on("connection", (socket) => {
   socket.on("new message", (newMessageRecieved) => {
     // console.log("New message received:", newMessageRecieved);
     let chat = newMessageRecieved.chat;
-    if (!chat.users) return 
+    if (!chat.users) return;
     // console.log("chat.users is empty");
 
     chat.users.forEach((user) => {

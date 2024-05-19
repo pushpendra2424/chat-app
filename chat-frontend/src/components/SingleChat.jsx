@@ -20,7 +20,7 @@ import ScrollableChat from "./ScrollableChat";
 import io from "socket.io-client";
 import Typing from "../animations/Typing";
 
-const ENDPOINT = "http://localhost:5000";
+const ENDPOINT = "https://chat-app-mern1.vercel.app";
 
 let socket, selectedChatCompare;
 
