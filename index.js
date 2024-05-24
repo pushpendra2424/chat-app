@@ -19,14 +19,14 @@ connectDB();
 
 app.use(express.json());
 
-app.use(
-  cors({
-    origin: "https://chat-app-mern1.vercel.app",
-  })
-);
+// app.use(
+//   cors({
+//     origin: "https://chat-app-mern1.vercel.app",
+//   })
+// );
 
-app.use(express.static(path.join(__dirname, "./public/")));
-app.use("/api/profile/image", express.static(path.join(__dirname, "uploads")));
+app.use(express.static(path.join(__dirname, "/../../../../../tmp")));
+app.use("/api/profile/image", express.static(path.join(__dirname, "temp")));
 app.use("/api/user", userRoutes);
 app.use("/api/chat", chatRoutes);
 app.use("/api/message", messageRoutes);
@@ -65,7 +65,7 @@ const server = app.listen(port, async (req, res) => {
 const io = socket(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "http://localhost:5173",
+    origin: "https://chat-app-mern1.vercel.app",
   },
 });
 
