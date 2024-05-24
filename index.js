@@ -25,7 +25,7 @@ app.use(express.json());
 //   })
 // );
 
-app.use(express.static(path.join(__dirname, "/../../../../../tmp")));
+app.use(express.static(path.join(__dirname, "./tmp")));
 app.use("/api/profile/image", express.static(path.join(__dirname, "temp")));
 app.use("/api/user", userRoutes);
 app.use("/api/chat", chatRoutes);

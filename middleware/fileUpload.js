@@ -5,7 +5,7 @@ const { v4 } = require("uuid");
 const maxSize = 1 * 1024 * 1024;
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    const uploadPath = path.join(__dirname, "../uploads");
+    const uploadPath = path.join(__dirname, "../temp");
     cb(null, uploadPath);
   },
   filename: (req, file, cb) => {
